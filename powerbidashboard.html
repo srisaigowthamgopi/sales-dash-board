@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Sales Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    canvas { max-width: 600px; margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+
+  <h1>Sales Dashboard</h1>
+  <h3>Total Sales by Region</h3>
+  <canvas id="salesByRegion"></canvas>
+
+  <h3>Monthly Sales Trend</h3>
+  <canvas id="monthlySales"></canvas>
+
+  <script>
+    const regionCtx = document.getElementById('salesByRegion').getContext('2d');
+    const monthlyCtx = document.getElementById('monthlySales').getContext('2d');
+
+    // Sales by Region
+    new Chart(regionCtx, {
+      type: 'bar',
+      data: {
+        labels: ['North', 'South', 'East', 'West'],
+        datasets: [{
+          label: 'Sales ($)',
+          data: [12000, 9000, 14000, 7000],
+          backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    // Monthly Sales Trend
+    new Chart(monthlyCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Sales ($)',
+          data: [10000, 12000, 9000, 15000, 13000, 16000],
+          borderColor: '#3e95cd',
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+  </script>
+
+</body>
+</html>
